@@ -3,20 +3,23 @@ name: CI Workflow
 on:
   push:
     branches:
-      - master
+      - master  # Ana branch ismi 'master'
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: self-hosted  # Self-hosted runner kullanıyoruz
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Print system info
-        run: uname -a
+        run: uname -a  # Sistem bilgilerini yazdırır
 
-      - name: Set up Swift
-        uses: apple-actions/setup-swift@v2
-        
+      - name: Install Swift
+        run: |
+          # Swift toolchain'ı yükle
+          brew install swift
+
       - name: Run tests
-        run: swift test
+        run: swift test  # Testleri çalıştır
