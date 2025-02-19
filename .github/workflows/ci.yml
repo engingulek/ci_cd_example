@@ -14,3 +14,9 @@ jobs:
 
       - name: Print system info
         run: uname -a
+
+      - name: Set up Swift
+        uses: apple-actions/setup-swift@v2
+        
+      - name: Run tests
+        run: swift test
